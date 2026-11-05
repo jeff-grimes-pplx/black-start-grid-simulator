@@ -52,11 +52,10 @@ export function drawVoltageProfile(
   ctx.fillStyle = "rgba(20, 240, 160, 0.08)";
   ctx.fillRect(padL, yOf(1.05), plotW, yOf(0.95) - yOf(1.05));
 
-  // Reference lines: 0.95, 1.00, 1.05, 1.20 PRC-024 Instant Trip
+  // Reference lines: 0.95, 1.05, 1.20 PRC-024 Instant Trip
   const refs: [number, string, string][] = [
     [1.2, "rgba(255, 59, 92, 0.65)", "1.20"],
     [1.05, "rgba(20, 240, 160, 0.35)", "1.05"],
-    [1.0, "rgba(148, 163, 184, 0.25)", "1.00"],
     [0.95, "rgba(255, 176, 32, 0.35)", "0.95"],
   ];
 
@@ -106,7 +105,7 @@ export function drawVoltageProfile(
     }
 
     // Bus number ticks (spaced cleanly across all 24 buses, highlighting Bus 22 Aubrey)
-    if ([1, 5, 9, 13, 17, 22, 24].includes(i + 1)) {
+    if ([1, 6, 12, 17, 22].includes(i + 1)) {
       ctx.fillStyle = i === 21 ? C.cyan : "#64748B";
       ctx.font = `600 8px "JetBrains Mono", monospace`;
       ctx.textAlign = "center";
@@ -161,7 +160,7 @@ export function drawQvFerrantiCurve(
   const vMin = 0.94;
   const vMax = 1.25;
 
-  const xOf = (qMvar: number) => padL + (Math.min(qMaxCharge, Math.max(0, qMvar)) / qMaxCharge) * plotW;
+  const xOf = (qMvar: number) => padL + 8 + (Math.min(qMaxCharge, Math.max(0, qMvar)) / qMaxCharge) * (plotW - 8);
   const yOf = (v: number) => padT + (1 - (v - vMin) / (vMax - vMin)) * plotH;
 
   // Grid & PRC-024 1.20 pu Trip Ceiling
