@@ -105,8 +105,8 @@ export function drawVoltageProfile(
       ctx.fillRect(x, top, barW, h);
     }
 
-    // Bus number ticks
-    if ((i + 1) % 2 === 0 || i === 0 || i === 21) {
+    // Bus number ticks (spaced cleanly across all 24 buses, highlighting Bus 22 Aubrey)
+    if ([1, 5, 9, 13, 17, 22, 24].includes(i + 1)) {
       ctx.fillStyle = i === 21 ? C.cyan : "#64748B";
       ctx.font = `600 8px "JetBrains Mono", monospace`;
       ctx.textAlign = "center";

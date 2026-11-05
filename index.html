@@ -96,8 +96,8 @@
           <section id="telemetry-dock">
             <div class="dock-card">
               <div class="dock-card-header">
-                <span>1 · 24-BUS VOLTAGE (PU)</span>
-                <span class="dock-sub">0.95–1.05 Band · 1.20 Trip</span>
+                <span>1 · BUS VOLTAGE (PU)</span>
+                <span class="dock-sub">0.95–1.05 pu</span>
               </div>
               <canvas id="chart-voltage" class="dock-canvas"></canvas>
             </div>
@@ -105,15 +105,15 @@
             <div class="dock-card">
               <div class="dock-card-header">
                 <span>2 · Q–V FERRANTI CURVE</span>
-                <span class="dock-sub">−30 vs −60 Mvar Qmin</span>
+                <span class="dock-sub">Qmin Limit</span>
               </div>
               <canvas id="chart-qv" class="dock-canvas"></canvas>
             </div>
 
             <div class="dock-card">
               <div class="dock-card-header">
-                <span>3 · PHASOR V∠δ &amp; FREQ</span>
-                <span class="dock-sub">Phasor Rose · 59.3 Hz UFLS</span>
+                <span>3 · PHASOR &amp; FREQ</span>
+                <span class="dock-sub">59.3 Hz UFLS</span>
               </div>
               <canvas id="chart-phasor-freq" class="dock-canvas"></canvas>
             </div>
@@ -121,7 +121,7 @@
             <div class="dock-card dock-log-card">
               <div class="dock-card-header">
                 <span>4 · SCADA EVENT LOG</span>
-                <span class="dock-sub">Relay &amp; Breaker SOE</span>
+                <span class="dock-sub">Relay SOE</span>
               </div>
               <div id="soe-log-list" class="soe-list"></div>
             </div>
