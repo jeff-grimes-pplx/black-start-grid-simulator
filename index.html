@@ -19,7 +19,7 @@
           <div class="brand-beacon"></div>
           <div>
             <div class="brand-title">BLACK START</div>
-            <div class="brand-sub">IEEE RTS-24 AC POWER-FLOW SIMULATOR</div>
+            <div class="brand-sub">IEEE RTS-24 AC SIMULATOR</div>
           </div>
         </div>
 
@@ -71,7 +71,7 @@
           <button class="speed-btn" data-speed="60">60×</button>
           <button class="speed-btn" data-speed="300">300×</button>
           <button class="util-btn active" id="btn-audio-toggle" title="Toggle synthesized SCADA audio">🔊 Audio</button>
-          <button class="util-btn" id="btn-open-reference" title="Inspect Newton-Raphson & SciPy Verification">SciPy Verification</button>
+          <button class="util-btn" id="btn-open-reference" title="Inspect Newton-Raphson & SciPy Verification">SciPy Proof</button>
         </div>
       </header>
 
@@ -96,32 +96,32 @@
           <section id="telemetry-dock">
             <div class="dock-card">
               <div class="dock-card-header">
-                <span>1 · 24-BUS VOLTAGE PROFILE (PU)</span>
-                <span class="dock-sub">0.95–1.05 Nom · 1.20 PRC-024 Trip</span>
+                <span>1 · 24-BUS VOLTAGE (PU)</span>
+                <span class="dock-sub">0.95–1.05 Band · 1.20 Trip</span>
               </div>
               <canvas id="chart-voltage" class="dock-canvas"></canvas>
             </div>
 
             <div class="dock-card">
               <div class="dock-card-header">
-                <span>2 · Q–V FERRANTI RUNAWAY CURVE</span>
-                <span class="dock-sub">3 Units (−30 Mvar) vs 6 Units (−60 Mvar)</span>
+                <span>2 · Q–V FERRANTI CURVE</span>
+                <span class="dock-sub">−30 vs −60 Mvar Qmin</span>
               </div>
               <canvas id="chart-qv" class="dock-canvas"></canvas>
             </div>
 
             <div class="dock-card">
               <div class="dock-card-header">
-                <span>3 · SYNCHROPHASOR V∠δ &amp; SWING df/dt</span>
-                <span class="dock-sub">Polar Phasor Rose · 59.3 Hz UFLS</span>
+                <span>3 · PHASOR V∠δ &amp; FREQ</span>
+                <span class="dock-sub">Phasor Rose · 59.3 Hz UFLS</span>
               </div>
               <canvas id="chart-phasor-freq" class="dock-canvas"></canvas>
             </div>
 
             <div class="dock-card dock-log-card">
               <div class="dock-card-header">
-                <span>4 · SCADA SEQUENCE OF EVENTS (SOE)</span>
-                <span class="dock-sub">Real-Time Relay &amp; Breaker Log</span>
+                <span>4 · SCADA EVENT LOG</span>
+                <span class="dock-sub">Relay &amp; Breaker SOE</span>
               </div>
               <div id="soe-log-list" class="soe-list"></div>
             </div>

@@ -1031,118 +1031,67 @@ export class MapView {
   }
 
   private drawCanvasHud(ctx: CanvasRenderingContext2D, W: number, H: number, nowMs: number) {
-    // 1. Ferranti Trap Live Telemetry Callout Card (bottom-right open grid quadrant, zero overlap with substations)
+    // 1. Compact PRC-024 Trip Alert Pill (only shown during active trip, docked top-center-left away from all substations)
     const fb = this.ferrantiBanner;
-    if (fb && fb.active && W >= 640) {
-      const cardW = Math.min(542, W - 28);
-      const cardH = 88;
-      const cardX = W - cardW - 14;
-      const cardY = H - cardH - 36;
-
-      const isTrip = fb.tripped || fb.vAubrey >= 1.2;
-      const isWarn = !isTrip && (fb.qSaturated || fb.vAubrey > 1.05);
-      const borderCol = isTrip ? C.danger : isWarn ? C.warn : C.nominal;
-
+    if (fb && fb.active && (fb.tripped || fb.vAubrey >= 1.2) && W >= 640) {
+      const pillW = Math.min(420, W - 220);
+      const pillH = 26;
+      const pillX = 186;
+      const pillY = 10;
       ctx.save();
-      ctx.fillStyle = "rgba(6, 11, 21, 0.92)";
-      ctx.strokeStyle = borderCol;
-      ctx.lineWidth = isTrip ? 2.2 : 1.5;
+      ctx.fillStyle = "rgba(28, 7, 14, 0.94)";
+      ctx.strokeStyle = C.danger;
+      ctx.lineWidth = 1.6;
       ctx.beginPath();
-      ctx.roundRect(cardX, cardY, cardW, cardH, 8);
+      ctx.roundRect(pillX, pillY, pillW, pillH, 6);
       ctx.fill();
       ctx.stroke();
 
-      // Status pill
-      ctx.fillStyle = isTrip ? C.danger : isWarn ? C.warn : "rgba(20, 240, 160, 0.18)";
-      ctx.beginPath();
-      ctx.roundRect(cardX + 12, cardY + 10, 156, 18, 4);
-      ctx.fill();
-
-      ctx.font = `700 10px "JetBrains Mono", monospace`;
-      ctx.fillStyle = isTrip ? "#FFFFFF" : isWarn ? "#060B14" : C.nominal;
+      ctx.font = `700 10.5px "JetBrains Mono", monospace`;
+      ctx.fillStyle = "#FECDD3";
       ctx.textAlign = "left";
       ctx.textBaseline = "middle";
-      const badgeTxt = isTrip
-        ? "PRC-024 RELAY TRIP!"
-        : isWarn
-        ? "Q_MIN SATURATED · WARN"
-        : "AVR REGULATING · OK";
-      ctx.fillText(badgeTxt, cardX + 18, cardY + 19);
-
-      // Step counter & voltage telemetry
-      ctx.fillStyle = "#F8FAFC";
-      ctx.font = `700 12px "Space Grotesk", "Inter", sans-serif`;
-      ctx.fillText(fb.headline, cardX + 176, cardY + 19, cardW - 188);
-
-      // Voltage progression bar: 0.980 -> 1.080 -> 1.211 pu
-      const steps = [
-        { label: "0 Lines", v: "0.980 pu", active: fb.step === 0, done: fb.step > 0, col: C.nominal },
-        { label: "Line 21–22 (+14M)", v: "0.980 pu", active: fb.step === 1, done: fb.step > 1, col: C.nominal },
-        { label: "Line 17–22 (+22M)", v: "1.080 pu", active: fb.step === 2, done: fb.step > 2, col: C.warn },
-        { label: "Line 16–17 (+6M)", v: "1.211 pu TRIP", active: fb.step === 3, done: fb.step > 3, col: C.danger },
-      ];
-      const sw = (cardW - 24 - 18) / 4;
-      steps.forEach((st, idx) => {
-        const sx = cardX + 12 + idx * (sw + 6);
-        const sy = cardY + 35;
-        ctx.fillStyle = st.active
-          ? "rgba(30, 41, 59, 0.95)"
-          : st.done
-          ? "rgba(15, 23, 42, 0.85)"
-          : "rgba(15, 23, 42, 0.45)";
-        ctx.strokeStyle = st.active ? st.col : st.done ? "rgba(148, 163, 184, 0.4)" : "rgba(100, 116, 139, 0.2)";
-        ctx.lineWidth = st.active ? 1.6 : 1;
-        ctx.beginPath();
-        ctx.roundRect(sx, sy, sw, 30, 4);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.font = `600 9px "JetBrains Mono", monospace`;
-        ctx.fillStyle = "#94A3B8";
-        ctx.fillText(st.label, sx + 6, sy + 10);
-
-        ctx.font = `700 10.5px "JetBrains Mono", monospace`;
-        ctx.fillStyle = st.active || st.done ? st.col : "#64748B";
-        ctx.fillText(st.v, sx + 6, sy + 22);
-      });
-
-      ctx.font = `500 10px "Inter", sans-serif`;
-      ctx.fillStyle = "#CBD5E1";
-      ctx.fillText(fb.detail, cardX + 12, cardY + 76, cardW - 24);
+      ctx.fillText("PRC-024 TRIP: 22 Aubrey peaked at 1.211 pu (+21.1%)", pillX + 10, pillY + 13.5, pillW - 20);
       ctx.restore();
     }
 
     // 2. Bottom-left Compact Legend Bar (desktop/tablet viewports)
     if (W < 640) return;
     const legY = H - 28;
+    const items: [string, string][] = [
+      [C.nominal, "0.95–1.05 pu Nominal"],
+      [C.warn, "1.05–1.15 pu Qmin Rise"],
+      [C.danger, "≥1.20 pu PRC-024 Trip"],
+      ["#E0F2FE", "● MW Flow"],
+      [C.chargingViolet, "● +Mvar Charging"],
+      [C.loadGold, "■ Feeders (5 Bays/Bus)"],
+    ];
     ctx.save();
-    ctx.fillStyle = "rgba(6, 11, 21, 0.86)";
+    ctx.font = `600 9.5px "JetBrains Mono", monospace`;
+    let totalW = 20;
+    for (const [, label] of items) {
+      totalW += ctx.measureText(label).width + 28;
+    }
+    const legW = Math.min(W - 28, totalW);
+    ctx.fillStyle = "rgba(6, 11, 21, 0.88)";
     ctx.strokeStyle = "rgba(56, 189, 248, 0.22)";
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.roundRect(14, legY, Math.min(640, W - 28), 22, 5);
+    ctx.roundRect(14, legY, legW, 22, 5);
     ctx.fill();
     ctx.stroke();
 
-    const items: [string, string][] = [
-      [C.nominal, "0.95–1.05 pu Nominal"],
-      [C.warn, "1.05–1.15 pu Ferranti Qmin Rise"],
-      [C.danger, "≥1.20 pu PRC-024 Instant Trip"],
-      ["#E0F2FE", "● MW Active Flow"],
-      [C.chargingViolet, "● +Mvar Capacitive Charging"],
-      [C.loadGold, "■ Restored Feeders (85 Blocks / 120 Bays)"],
-    ];
     let lx = 24;
-    ctx.font = `600 9.5px "JetBrains Mono", monospace`;
     ctx.textBaseline = "middle";
     for (const [col, label] of items) {
+      const itemW = ctx.measureText(label).width + 28;
+      if (lx + itemW - 14 > 14 + legW) break;
       ctx.fillStyle = col;
       ctx.fillRect(lx, legY + 7, 8, 8);
       ctx.fillStyle = "#CBD5E1";
       ctx.textAlign = "left";
       ctx.fillText(label, lx + 12, legY + 11.5);
-      lx += ctx.measureText(label).width + 26;
-      if (lx > W - 90) break;
+      lx += itemW;
     }
     ctx.restore();
     void nowMs;

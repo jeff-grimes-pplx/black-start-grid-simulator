@@ -1301,7 +1301,7 @@ export class App {
   renderEventLog() {
     const el = document.getElementById("soe-log-list");
     if (!el) return;
-    const recent = this.sim.log.slice(-18).reverse();
+    const recent = this.sim.log.slice(-3).reverse();
     el.innerHTML = recent
       .map(
         (ev) => `
