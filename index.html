@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Black Start — IEEE RTS-24 AC Power-Flow & Ferranti Overvoltage Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="scada-shell">
+      <!-- TOP EMS TELEMETRY & MODE SWITCHER BAR -->
+      <header id="topbar">
+        <div class="brand-cluster">
+          <div class="brand-beacon"></div>
+          <div>
+            <div class="brand-title">BLACK START</div>
+            <div class="brand-sub">IEEE RTS-24 AC POWER-FLOW SIMULATOR</div>
+          </div>
+        </div>
+
+        <nav class="mode-switcher" aria-label="Operating Modes">
+          <button class="mode-btn active" data-mode-btn="ferranti">
+            <span class="mode-num">1</span>
+            <span>Ferranti Trap Demo</span>
+          </button>
+          <button class="mode-btn" data-mode-btn="guided">
+            <span class="mode-num">2</span>
+            <span>Guided Restoration</span>
+          </button>
+          <button class="mode-btn" data-mode-btn="sandbox">
+            <span class="mode-num">3</span>
+            <span>Operator Sandbox</span>
+          </button>
+        </nav>
+
+        <div class="kpi-cluster">
+          <div class="kpi-box">
+            <span class="kpi-label">SIM CLOCK</span>
+            <span class="kpi-value mono" id="kpi-clock">T+00:10:02</span>
+          </div>
+          <div class="kpi-box kpi-wide">
+            <div class="kpi-row-top">
+              <span class="kpi-label">RESTORED LOAD</span>
+              <span class="kpi-value mono" id="kpi-load">0 / 1,682 MW (0.0%)</span>
+            </div>
+            <div class="kpi-bar-track"><div class="kpi-bar-fill" id="kpi-load-fill"></div></div>
+          </div>
+          <div class="kpi-box">
+            <span class="kpi-label">ENERGIZED GRID</span>
+            <span class="kpi-value mono" id="kpi-buses">1 / 24 Buses · 0/85 Blocks</span>
+          </div>
+          <div class="kpi-box">
+            <span class="kpi-label">ISLAND FREQ</span>
+            <span class="kpi-value mono nominal" id="kpi-freq">60.00 Hz</span>
+          </div>
+          <div class="kpi-box">
+            <span class="kpi-label">BUS VOLTAGE</span>
+            <span class="kpi-value mono nominal" id="kpi-vmax">0.980 pu</span>
+          </div>
+        </div>
+
+        <div class="speed-cluster">
+          <button class="speed-btn" data-speed="0" title="Pause simulation">⏸</button>
+          <button class="speed-btn" data-speed="1">1×</button>
+          <button class="speed-btn active" data-speed="10">10×</button>
+          <button class="speed-btn" data-speed="60">60×</button>
+          <button class="speed-btn" data-speed="300">300×</button>
+          <button class="util-btn active" id="btn-audio-toggle" title="Toggle synthesized SCADA audio">🔊 Audio</button>
+          <button class="util-btn" id="btn-open-reference" title="Inspect Newton-Raphson & SciPy Verification">SciPy Verification</button>
+        </div>
+      </header>
+
+      <!-- INTERACTIVE WORKFLOW ACTION STRIP -->
+      <section id="workflow-strip" aria-label="Interactive Step Controls"></section>
+
+      <!-- MAIN WORKSPACE: LEFT GEOSPATIAL TOPOLOGY + TELEMETRY DOCK / RIGHT SCADA INSPECTOR -->
+      <main id="main-workspace">
+        <div id="left-stage">
+          <div id="canvas-viewport">
+            <canvas id="map-canvas"></canvas>
+            <div class="canvas-controls">
+              <button class="canvas-btn" id="btn-zoom-in" title="Zoom in">+</button>
+              <button class="canvas-btn" id="btn-zoom-out" title="Zoom out">−</button>
+              <button class="canvas-btn" id="btn-zoom-reset" title="Fit all 24 substations (1x wide)">1× Fit</button>
+              <button class="canvas-btn" id="btn-focus-aubrey" title="Center on 22 Aubrey Hydro Corridor">22 Aubrey</button>
+            </div>
+            <div id="scada-toast" role="status" aria-live="polite"></div>
+          </div>
+
+          <!-- 4-INSTRUMENT SYNCHROPHASOR & TELEMETRY DOCK -->
+          <section id="telemetry-dock">
+            <div class="dock-card">
+              <div class="dock-card-header">
+                <span>1 · 24-BUS VOLTAGE PROFILE (PU)</span>
+                <span class="dock-sub">0.95–1.05 Nom · 1.20 PRC-024 Trip</span>
+              </div>
+              <canvas id="chart-voltage" class="dock-canvas"></canvas>
+            </div>
+
+            <div class="dock-card">
+              <div class="dock-card-header">
+                <span>2 · Q–V FERRANTI RUNAWAY CURVE</span>
+                <span class="dock-sub">3 Units (−30 Mvar) vs 6 Units (−60 Mvar)</span>
+              </div>
+              <canvas id="chart-qv" class="dock-canvas"></canvas>
+            </div>
+
+            <div class="dock-card">
+              <div class="dock-card-header">
+                <span>3 · SYNCHROPHASOR V∠δ &amp; SWING df/dt</span>
+                <span class="dock-sub">Polar Phasor Rose · 59.3 Hz UFLS</span>
+              </div>
+              <canvas id="chart-phasor-freq" class="dock-canvas"></canvas>
+            </div>
+
+            <div class="dock-card dock-log-card">
+              <div class="dock-card-header">
+                <span>4 · SCADA SEQUENCE OF EVENTS (SOE)</span>
+                <span class="dock-sub">Real-Time Relay &amp; Breaker Log</span>
+              </div>
+              <div id="soe-log-list" class="soe-list"></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT SUBSTATION / BREAKER SCADA INSPECTOR RAIL -->
+        <aside id="inspector-rail">
+          <div id="inspector-content"></div>
+        </aside>
+      </main>
+
+      <!-- EQUATIONS & SCIPY VERIFICATION DRAWER -->
+      <section id="reference-drawer" hidden>
+        <div class="drawer-modal">
+          <div class="drawer-top">
+            <h2>Newton–Raphson AC Power Flow &amp; SciPy Verification Suite</h2>
+            <button class="btn-secondary" id="btn-close-reference">Close</button>
+          </div>
+          <div id="reference-drawer-body"></div>
+        </div>
+      </section>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

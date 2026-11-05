@@ -1,0 +1,90 @@
+{
+  "when": "2026-11-05T23:17:08.120Z",
+  "passed": 16,
+  "total": 16,
+  "guided_state_hash": "b7432fc9838871d6ad175e0aea32a4104802f51138a2c3682e8512072476e1d2",
+  "guided_actions": 160,
+  "guided_win_at": "04:54:25",
+  "results": [
+    {
+      "test": "guided plan restores all load",
+      "pass": true,
+      "detail": "won=true at 04:54:25, 1681.5/1681.5 MW, 85/85 feeders, 160 actions, 258 plan steps"
+    },
+    {
+      "test": "guided plan is clean",
+      "pass": true,
+      "detail": "trips 0, sheds 0, collapses 0, refusals 0; f ∈ [59.548, 60.130] Hz, worst loading 90 %"
+    },
+    {
+      "test": "solver effort in the guided run",
+      "pass": true,
+      "detail": "32706 power-flow solves, 99982 Newton iterations (3.06 per solve, warm-started), max 4 on the last solve"
+    },
+    {
+      "test": "replay reproduces the guided run exactly",
+      "pass": true,
+      "detail": "state hash b7432fc9838871d6… matches; replay won at 04:54:25; 191 log entries both ways"
+    },
+    {
+      "test": "replay from the saved JSON log matches too",
+      "pass": true,
+      "detail": "hash b7432fc9838871d6…"
+    },
+    {
+      "test": "damaged line cannot be closed",
+      "pass": true,
+      "detail": "Line 17–22 is damaged; crews have not released it."
+    },
+    {
+      "test": "challenge plan restores all load with 17–22 out",
+      "pass": true,
+      "detail": "won=true at 04:54:25, 159 actions, trips 0, sheds 0, refusals 0"
+    },
+    {
+      "test": "oversized pickup → UFLS",
+      "pass": true,
+      "detail": "nadir 58.91 Hz; Under-frequency load shedding at 58.91 Hz: Feeder 2 at 1 Abel shed (−6.4 MW). Generation could not follow the last pickup."
+    },
+    {
+      "test": "cable on a CT island → reactive-surplus collapse",
+      "pass": true,
+      "detail": "Voltage collapse in island 1. Reactive surplus: 46 Mvar of line charging against 0 Mvar of load and 0 Mvar of absorbing capability. Voltage ran away upward (last solved: 1 Abel 1.035 pu). Every unit in the island tripped and its load is lost. [solver: voltage solution collapsed]"
+    },
+    {
+      "test": "unloaded lines at 1.05 pu setpoint → voltage rise and over-voltage trip",
+      "pass": true,
+      "detail": "Vmax 1.173 pu; U50 #1, #2, #3, #4, #5 and #6 at 22 Aubrey tripped on over-voltage (1.145 pu at the plant bus for longer than PRC-024 allows)."
+    },
+    {
+      "test": "line overload → thermal trip with ratings in the message",
+      "pass": true,
+      "detail": "peak loading 130 % at 05:00:23; Line 7–8 tripped on overload: 228 MVA against a 220 MVA short-time emergency rating (continuous 175 MVA)."
+    },
+    {
+      "test": "overload trip islands Alder and its units trip on over-frequency",
+      "pass": true,
+      "detail": "U100 #1, #2 and #3 at 7 Alder tripped on over-frequency (63.64 Hz is outside the PRC-024 no-trip zone)."
+    },
+    {
+      "test": "dead-bus pickup is refused with a reason",
+      "pass": true,
+      "detail": "15 Arthur is dead; energize it before picking up load."
+    },
+    {
+      "test": "sync check blocks a tie between islands that are apart",
+      "pass": true,
+      "detail": "Sync check blocked the close: Δf = 0.43 Hz between the two islands (limit 0.1 Hz)."
+    },
+    {
+      "test": "engine states along the guided run all converge",
+      "pass": true,
+      "detail": "4 intermediate states checked"
+    },
+    {
+      "test": "reactive limits are consistent along the guided run",
+      "pass": true,
+      "detail": "67 energized plant-bus states checked, none pinned at a limit it does not touch"
+    }
+  ]
+}

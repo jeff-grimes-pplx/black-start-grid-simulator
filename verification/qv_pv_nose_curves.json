@@ -1,0 +1,488 @@
+{
+  "qv_ferranti_curve": [
+    {
+      "charging_mvar": 0.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -0.0,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -0.0
+    },
+    {
+      "charging_mvar": 1.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -0.96,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -0.96
+    },
+    {
+      "charging_mvar": 2.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -1.92,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -1.92
+    },
+    {
+      "charging_mvar": 3.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -2.89,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -2.89
+    },
+    {
+      "charging_mvar": 4.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -3.85,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -3.85
+    },
+    {
+      "charging_mvar": 5.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -4.82,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -4.82
+    },
+    {
+      "charging_mvar": 6.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -5.79,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -5.79
+    },
+    {
+      "charging_mvar": 7.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -6.76,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -6.76
+    },
+    {
+      "charging_mvar": 8.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -7.73,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -7.73
+    },
+    {
+      "charging_mvar": 9.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -8.71,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -8.71
+    },
+    {
+      "charging_mvar": 10.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -9.68,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -9.68
+    },
+    {
+      "charging_mvar": 11.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -10.66,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -10.66
+    },
+    {
+      "charging_mvar": 12.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -11.64,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -11.64
+    },
+    {
+      "charging_mvar": 13.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -12.62,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -12.62
+    },
+    {
+      "charging_mvar": 14.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -13.6,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -13.6
+    },
+    {
+      "charging_mvar": 15.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -14.58,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -14.58
+    },
+    {
+      "charging_mvar": 16.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -15.56,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -15.56
+    },
+    {
+      "charging_mvar": 17.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -16.55,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -16.55
+    },
+    {
+      "charging_mvar": 18.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -17.54,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -17.54
+    },
+    {
+      "charging_mvar": 19.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -18.52,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -18.52
+    },
+    {
+      "charging_mvar": 20.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -19.52,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -19.52
+    },
+    {
+      "charging_mvar": 21.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -20.51,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -20.51
+    },
+    {
+      "charging_mvar": 22.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -21.5,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -21.5
+    },
+    {
+      "charging_mvar": 23.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -22.5,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -22.5
+    },
+    {
+      "charging_mvar": 24.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -23.49,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -23.49
+    },
+    {
+      "charging_mvar": 25.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -24.49,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -24.49
+    },
+    {
+      "charging_mvar": 26.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -25.49,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -25.49
+    },
+    {
+      "charging_mvar": 27.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -26.49,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -26.49
+    },
+    {
+      "charging_mvar": 28.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -27.49,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -27.49
+    },
+    {
+      "charging_mvar": 29.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -28.5,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -28.5
+    },
+    {
+      "charging_mvar": 30.0,
+      "v_3units_pu": 0.98,
+      "q_3units_mvar": -29.5,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -29.5
+    },
+    {
+      "charging_mvar": 31.0,
+      "v_3units_pu": 0.9892,
+      "q_3units_mvar": -31.09,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -30.51
+    },
+    {
+      "charging_mvar": 32.0,
+      "v_3units_pu": 1.0079,
+      "q_3units_mvar": -33.34,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -31.52
+    },
+    {
+      "charging_mvar": 33.0,
+      "v_3units_pu": 1.0274,
+      "q_3units_mvar": -35.75,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -32.53
+    },
+    {
+      "charging_mvar": 34.0,
+      "v_3units_pu": 1.0477,
+      "q_3units_mvar": -38.33,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -33.54
+    },
+    {
+      "charging_mvar": 35.0,
+      "v_3units_pu": 1.0688,
+      "q_3units_mvar": -41.1,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -34.56
+    },
+    {
+      "charging_mvar": 36.0,
+      "v_3units_pu": 1.0908,
+      "q_3units_mvar": -44.07,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -35.57
+    },
+    {
+      "charging_mvar": 37.0,
+      "v_3units_pu": 1.1138,
+      "q_3units_mvar": -47.26,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -36.59
+    },
+    {
+      "charging_mvar": 38.0,
+      "v_3units_pu": 1.1378,
+      "q_3units_mvar": -50.69,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -37.6
+    },
+    {
+      "charging_mvar": 39.0,
+      "v_3units_pu": 1.1629,
+      "q_3units_mvar": -54.39,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -38.62
+    },
+    {
+      "charging_mvar": 40.0,
+      "v_3units_pu": 1.1892,
+      "q_3units_mvar": -58.38,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -39.65
+    },
+    {
+      "charging_mvar": 41.0,
+      "v_3units_pu": 1.2167,
+      "q_3units_mvar": -62.69,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -40.67
+    },
+    {
+      "charging_mvar": 42.0,
+      "v_3units_pu": 1.2456,
+      "q_3units_mvar": -67.35,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -41.69
+    },
+    {
+      "charging_mvar": 43.0,
+      "v_3units_pu": 1.2759,
+      "q_3units_mvar": -72.41,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -42.72
+    },
+    {
+      "charging_mvar": 44.0,
+      "v_3units_pu": 1.3078,
+      "q_3units_mvar": -77.91,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -43.75
+    },
+    {
+      "charging_mvar": 45.0,
+      "v_3units_pu": 1.3414,
+      "q_3units_mvar": -83.89,
+      "v_6units_pu": 0.98,
+      "q_6units_mvar": -44.77
+    }
+  ],
+  "pv_nose_curve": [
+    {
+      "p_mw": 0.0,
+      "v_upper_pu": 1.02,
+      "v_lower_pu": 0.0
+    },
+    {
+      "p_mw": 20.0,
+      "v_upper_pu": 1.0172,
+      "v_lower_pu": 0.0136
+    },
+    {
+      "p_mw": 40.0,
+      "v_upper_pu": 1.0142,
+      "v_lower_pu": 0.0273
+    },
+    {
+      "p_mw": 60.0,
+      "v_upper_pu": 1.011,
+      "v_lower_pu": 0.0411
+    },
+    {
+      "p_mw": 80.0,
+      "v_upper_pu": 1.0077,
+      "v_lower_pu": 0.0549
+    },
+    {
+      "p_mw": 100.0,
+      "v_upper_pu": 1.0041,
+      "v_lower_pu": 0.0689
+    },
+    {
+      "p_mw": 120.0,
+      "v_upper_pu": 1.0002,
+      "v_lower_pu": 0.083
+    },
+    {
+      "p_mw": 140.0,
+      "v_upper_pu": 0.9962,
+      "v_lower_pu": 0.0972
+    },
+    {
+      "p_mw": 160.0,
+      "v_upper_pu": 0.9919,
+      "v_lower_pu": 0.1116
+    },
+    {
+      "p_mw": 180.0,
+      "v_upper_pu": 0.9874,
+      "v_lower_pu": 0.1261
+    },
+    {
+      "p_mw": 200.0,
+      "v_upper_pu": 0.9826,
+      "v_lower_pu": 0.1408
+    },
+    {
+      "p_mw": 220.0,
+      "v_upper_pu": 0.9775,
+      "v_lower_pu": 0.1557
+    },
+    {
+      "p_mw": 240.0,
+      "v_upper_pu": 0.9722,
+      "v_lower_pu": 0.1708
+    },
+    {
+      "p_mw": 260.0,
+      "v_upper_pu": 0.9665,
+      "v_lower_pu": 0.1861
+    },
+    {
+      "p_mw": 280.0,
+      "v_upper_pu": 0.9605,
+      "v_lower_pu": 0.2017
+    },
+    {
+      "p_mw": 300.0,
+      "v_upper_pu": 0.9542,
+      "v_lower_pu": 0.2175
+    },
+    {
+      "p_mw": 320.0,
+      "v_upper_pu": 0.9475,
+      "v_lower_pu": 0.2337
+    },
+    {
+      "p_mw": 340.0,
+      "v_upper_pu": 0.9403,
+      "v_lower_pu": 0.2501
+    },
+    {
+      "p_mw": 360.0,
+      "v_upper_pu": 0.9327,
+      "v_lower_pu": 0.267
+    },
+    {
+      "p_mw": 380.0,
+      "v_upper_pu": 0.9246,
+      "v_lower_pu": 0.2843
+    },
+    {
+      "p_mw": 400.0,
+      "v_upper_pu": 0.916,
+      "v_lower_pu": 0.3021
+    },
+    {
+      "p_mw": 420.0,
+      "v_upper_pu": 0.9067,
+      "v_lower_pu": 0.3205
+    },
+    {
+      "p_mw": 440.0,
+      "v_upper_pu": 0.8967,
+      "v_lower_pu": 0.3395
+    },
+    {
+      "p_mw": 460.0,
+      "v_upper_pu": 0.8858,
+      "v_lower_pu": 0.3593
+    },
+    {
+      "p_mw": 480.0,
+      "v_upper_pu": 0.874,
+      "v_lower_pu": 0.3799
+    },
+    {
+      "p_mw": 500.0,
+      "v_upper_pu": 0.861,
+      "v_lower_pu": 0.4017
+    },
+    {
+      "p_mw": 520.0,
+      "v_upper_pu": 0.8466,
+      "v_lower_pu": 0.425
+    },
+    {
+      "p_mw": 540.0,
+      "v_upper_pu": 0.8302,
+      "v_lower_pu": 0.45
+    },
+    {
+      "p_mw": 560.0,
+      "v_upper_pu": 0.8113,
+      "v_lower_pu": 0.4775
+    },
+    {
+      "p_mw": 580.0,
+      "v_upper_pu": 0.7885,
+      "v_lower_pu": 0.5089
+    },
+    {
+      "p_mw": 600.0,
+      "v_upper_pu": 0.7591,
+      "v_lower_pu": 0.5468
+    },
+    {
+      "p_mw": 620.0,
+      "v_upper_pu": 0.7117,
+      "v_lower_pu": 0.6027
+    }
+  ]
+}
