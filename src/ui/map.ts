@@ -1034,10 +1034,10 @@ export class MapView {
     // 1. Compact PRC-024 Trip Alert Pill (only shown during active trip, docked top-center-left away from all substations)
     const fb = this.ferrantiBanner;
     if (fb && fb.active && (fb.tripped || fb.vAubrey >= 1.2) && W >= 640) {
-      const pillW = Math.min(420, W - 220);
+      const pillW = Math.min(420, W - 260);
       const pillH = 26;
-      const pillX = 186;
-      const pillY = 10;
+      const pillX = 242;
+      const pillY = 12;
       ctx.save();
       ctx.fillStyle = "rgba(28, 7, 14, 0.94)";
       ctx.strokeStyle = C.danger;

@@ -321,8 +321,8 @@ export class App {
       const actionCounts: Record<string, number> = {
         "north-spine": 28,    // Northern 230 kV spine energized, steam plants cranking, 14 Arnold SynCon starting
         "multi-island": 64,   // North 230 kV + South 138 kV CT islands active, initial load blocks restored
-        "cable-reactor": 108, // 6 Alber 100 Mvar shunt reactor + 6-10 cable energized, thermal units ramping
-        "full-1682": this.refActions.length, // All 163 actions -> 1,681.5 / 1,682 MW restored at 60.00 Hz
+        "cable-reactor": 159, // 6 Alber -100 Mvar shunt reactor IN SERVICE, ready to close 6-10 cable (+266 Mvar Qc)
+        "full-1682": this.refActions.length, // All 160 actions -> 1,681.5 / 1,682 MW restored at 60.00 Hz
       };
       const count = actionCounts[milestoneId] ?? this.refActions.length;
       this.replayCursor = count;
@@ -333,6 +333,16 @@ export class App {
       this.ferrantiTripped = false;
       this.ferrantiPeakPu = this.sim.stats.vMax;
       this.sound.playUnitSync();
+
+      if (milestoneId === "north-spine") {
+        this.map.sel = { kind: "bus", idx: 14 }; // 15 Arthur (5x12 MW + 1x155 MW cranking)
+      } else if (milestoneId === "multi-island") {
+        this.map.sel = { kind: "bus", idx: 13 }; // 14 Arnold (-50..+200 Mvar Synchronous Condenser)
+      } else if (milestoneId === "cable-reactor") {
+        this.map.sel = { kind: "bus", idx: 5 };  // 6 Alber (-100 Mvar Shunt Reactor IN SERVICE)
+      } else {
+        this.map.sel = { kind: "bus", idx: 21 }; // 22 Aubrey Hydro
+      }
 
       // Advance guideIndex to match the exact action count reached by this milestone
       this.plan = buildGuidedPlan(this.sc, this.contingencyDamaged ? "challenge" : "guided");
@@ -657,7 +667,7 @@ export class App {
     document.getElementById("btn-zoom-out")?.addEventListener("click", () => this.map.zoomBy(1 / 1.22));
     document.getElementById("btn-zoom-reset")?.addEventListener("click", () => this.map.resetView());
     document.getElementById("btn-focus-aubrey")?.addEventListener("click", () => {
-      this.map.focusWorld(260, 120, 1.45);
+      this.map.focusWorld(635, 135, 1.24);
       this.map.sel = { kind: "bus", idx: 21 };
       this.renderInspector();
     });
