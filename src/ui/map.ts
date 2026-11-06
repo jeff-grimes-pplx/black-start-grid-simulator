@@ -600,7 +600,9 @@ export class MapView {
       // Callout badge on key Ferranti / charging corridors or high-loading lines
       const keyTag = `${br.f}-${br.t}`;
       const chargingLabel = KEY_CHARGING_BRANCHES[keyTag];
-      const showTagOnViewport = this.canvas.clientWidth >= 640 || isSelected || isHover || isHint;
+      const showTagOnViewport =
+        (this.canvas.clientWidth >= 640 || isSelected || isHover || isHint) &&
+        my < this.canvas.clientHeight - 48;
       if (showTagOnViewport && ((chargingLabel && br.circuit === 1) || (st.energized && st.loading >= 0.65) || isSelected || isHover || isHint)) {
         this.drawBranchTag(ctx, mx, my, br, st, chargingLabel, isHint, isOvervolt, isSevereOvervolt);
       }
@@ -1034,10 +1036,10 @@ export class MapView {
     // 1. Compact PRC-024 Trip Alert Pill (only shown during active trip, docked top-center-left away from all substations)
     const fb = this.ferrantiBanner;
     if (fb && fb.active && (fb.tripped || fb.vAubrey >= 1.2) && W >= 640) {
-      const pillW = Math.min(420, W - 260);
+      const pillW = Math.min(410, W - 260);
       const pillH = 26;
-      const pillX = 242;
-      const pillY = 12;
+      const pillX = Math.round(W * 0.44);
+      const pillY = 10;
       ctx.save();
       ctx.fillStyle = "rgba(28, 7, 14, 0.94)";
       ctx.strokeStyle = C.danger;
